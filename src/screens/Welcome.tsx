@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from "react";
 import { StatusBar } from "react-native";
+import React, { FunctionComponent } from "react";
 import styled from "styled-components/native";
 import { colors } from "../components/colors";
 import { Container } from "../components/shared";
@@ -35,7 +35,7 @@ import RegularButton from "../components/Buttons/RegularButton";
 const Welcome: FunctionComponent = () => {
   return (
     <>
-      <StatusBar barStyle={"light-content"} />
+      <StatusBar style='light'/>
       <WelcomeContainer>
         <TopSection>
           <TopImage source={background} />
