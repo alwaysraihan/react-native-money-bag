@@ -1,22 +1,16 @@
 import React, { FunctionComponent } from "react";
-import { CardProps } from "./cardTypes";
 import styled from "styled-components/native";
-import { ScreenWidth } from "../shared";
 import { colors } from "../colors";
 import { View } from "react-native";
 const CardBackground = styled.ImageBackground`
   height: 75%;
-  width: ${ScreenWidth * 0.67}px;
+  width: 100%;
   resize-mode: cover;
   background-color: ${colors.accent};
   border-radius: 25px;
-  margin-right: 25px;
   overflow: hidden;
 `;
-const CardTouchable = styled.TouchableOpacity`
-  height: 100%;
-  border-radius: 25px;
-`;
+
 const TouchableView = styled.View`
   justify-content: space-between;
   align-items: center;
@@ -39,20 +33,15 @@ const Logo = styled.Image`
 import card_bg from "../../../assets/splash.png";
 import RegularText from "../Texts/RegularText";
 import SmallText from "../Texts/SmallText";
-import { useNavigation } from "@react-navigation/native";
-import { NavigationProps as HomeNavigationProps } from "../../screens/Home";
-const CardItem: FunctionComponent<CardProps> = (props) => {
-  const navigation = useNavigation<HomeNavigationProps["navigation"]>()
-  const handlePress = () => {
-    navigation.navigate("Balance",{...props})
-  };
+import { IBalanceCardProps } from "./types";
+const BalanceCard: FunctionComponent<IBalanceCardProps> = (props) => {
+  const handlePress = () => {};
   return (
     <CardBackground source={card_bg}>
-      <CardTouchable underlayColor={colors.secondary} onPress={handlePress}>
         <TouchableView>
           <CardRow>
             <RegularText textStyle={{ color: colors.white }}>
-              ****{props.accountNo.slice(6, 10)}
+              ****{props?.accountNo?.slice(6, 10)}
             </RegularText>
           </CardRow>
           <CardRow>
@@ -69,9 +58,8 @@ const CardItem: FunctionComponent<CardProps> = (props) => {
             <Logo source={props.logo} />
           </CardRow>
         </TouchableView>
-      </CardTouchable>
     </CardBackground>
   );
 };
 
-export default CardItem;
+export default BalanceCard;

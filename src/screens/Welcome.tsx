@@ -1,4 +1,4 @@
-import { StatusBar } from "react-native";
+import { StatusBar } from "expo-status-bar"; 
 import React, { FunctionComponent } from "react";
 import styled from "styled-components/native";
 import { colors } from "../components/colors";
@@ -32,10 +32,15 @@ import background from "../../assets/raihan.jpg";
 import BigText from "../components/Texts/BigText";
 import SmallText from "../components/Texts/SmallText";
 import RegularButton from "../components/Buttons/RegularButton";
-const Welcome: FunctionComponent = () => {
+
+// types 
+import { RootStackParamList } from "../components/navigators/RootStack";
+import { StackScreenProps } from "@react-navigation/stack";
+type NavigationProps= StackScreenProps<RootStackParamList,"Welcome">
+const Welcome: FunctionComponent<NavigationProps> = ({navigation}) => {
   return (
     <>
-      <StatusBar style='light'/>
+      <StatusBar style="light"/>
       <WelcomeContainer>
         <TopSection>
           <TopImage source={background} />
@@ -43,7 +48,7 @@ const Welcome: FunctionComponent = () => {
           <BottomSection>
             <BigText textStyle={{width:"70%", marginBottom:25}}>Best way to track your money</BigText>
             <SmallText textStyle={{width:"70%", marginBottom:25}}>Best payment method, connects your money to your friends, family.</SmallText>
-            <RegularButton onPress={()=>{}}>
+            <RegularButton onPress={()=>{navigation.navigate("Home")}}>
               Get Started
             </RegularButton>
           </BottomSection>

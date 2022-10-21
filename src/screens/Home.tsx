@@ -13,7 +13,11 @@ const HomeContainer = styled(Container)`
   width: 100%;
   flex: 1;
 `;
-const Home: FunctionComponent = () => {
+// types 
+import { RootStackParamList } from "../components/navigators/RootStack";
+import { StackScreenProps } from "@react-navigation/stack";
+export type NavigationProps= StackScreenProps<RootStackParamList,"Home">
+const Home: FunctionComponent<NavigationProps>= ({navigation}) => {
   const cardData = [
     {
       id: 1,
@@ -96,6 +100,7 @@ const Home: FunctionComponent = () => {
       img: portrait,
     },
   ];
+  
   return (
     <HomeContainer>
       <StatusBar style="dark" />
